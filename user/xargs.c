@@ -27,7 +27,7 @@ main(int argc, char *argv[])
 			index++;
 		}
 
-		if (n <= 0) {
+		if (n <= 0 && index == 0) {
 			break;
 		}
 
