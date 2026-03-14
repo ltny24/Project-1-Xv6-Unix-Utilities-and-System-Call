@@ -1,5 +1,9 @@
 struct stat;
 
+// procinfo() system call interface for retrieving process information
+struct procinfo;
+int procinfo(int pid, struct procinfo *info);
+
 // system calls
 int fork(void);
 int exit(int) __attribute__((noreturn));
