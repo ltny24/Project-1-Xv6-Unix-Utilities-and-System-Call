@@ -4,22 +4,32 @@
 #include "kernel/fs.h"
 #include "kernel/fcntl.h"
 
+#define MAX_PATH 512
+
 void
 tree(char *path, int depth)
 {
-	char buf[512], *p;
+	char *buf, *p;
 	int fd;
 	struct dirent de;
 	struct stat st;
 
+	buf = malloc(MAX_PATH);
+	if (buf == 0) {
+		fprintf(2, "tree: malloc failed\n");
+		return;
+	}
+
 	if ((fd = open(path, O_RDONLY)) < 0) {
 		fprintf(2, "tree: cannot open %s\n", path);
+		free(buf);
 		return;
 	}
 
 	if (fstat(fd, &st) < 0) {
 		fprintf(2, "tree: cannot stat %s\n", path);
 		close(fd);
+		free(buf);
 		return;
 	}
 
@@ -43,9 +53,10 @@ tree(char *path, int depth)
 
 	if (st.type == T_DIR) {
 		// Ensure path (path + '/' + longest name possible for file/dir + '\0') is not too long for the buffer
-		if (strlen(path) + 1 + DIRSIZ + 1 > sizeof buf) {
+		if (strlen(path) + 1 + DIRSIZ + 1 > MAX_PATH) {
 			printf("tree: path too long\n");
 			close(fd);
+			free(buf);
 			return;
 		}
 
@@ -70,6 +81,7 @@ tree(char *path, int depth)
 		}
 	}
 	close(fd);
+	free(buf);
 }
 
 int
