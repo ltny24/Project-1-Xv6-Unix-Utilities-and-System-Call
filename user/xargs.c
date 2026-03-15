@@ -25,6 +25,11 @@ main(int argc, char *argv[])
 
 		while ((n = read(0, &buf[index], 1)) > 0 && buf[index] != '\n') {
 			index++;
+
+			if (index >= sizeof(buf) - 1) {
+				fprintf(2, "xargs: arguments too long\n");
+				exit(1);
+			}
 		}
 
 		if (n <= 0 && index == 0) {
