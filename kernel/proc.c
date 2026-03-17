@@ -5,6 +5,7 @@
 #include "spinlock.h"
 #include "proc.h"
 #include "defs.h"
+#include "procinfo.h"
 
 struct cpu cpus[NCPU];
 
@@ -686,4 +687,38 @@ procdump(void)
     printf("%d %s %s", p->pid, state, p->name);
     printf("\n");
   }
+}
+
+// System call: retrieve information of a process with given PID
+// and copy the data to user space at address addr
+int procinfo(int pid, uint64 addr)
+{
+  if (addr == 0)
+    return -1;
+
+  struct proc* p;
+  struct procinfo info;
+
+  for (p = proc; p < &proc[NPROC]; p++) {
+    acquire(&p->lock);
+
+    if (p->pid == pid) {
+      info.pid = p->pid;
+      info.ppid = p->parent ? p->parent->pid : 0;
+      info.state = p->state;
+      info.sz = p->sz;
+      safestrcpy(info.name, p->name, sizeof(info.name));
+
+      release(&p->lock);
+
+      if (copyout(myproc()->pagetable, addr, (char*)&info, sizeof(info)) < 0)
+        return -1;
+
+      return 0;
+    }
+
+    release(&p->lock);
+  }
+
+  return -1;
 }

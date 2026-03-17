@@ -92,6 +92,19 @@ sys_uptime(void)
   return xticks;
 }
 
+// System call handler for procinfo
+// Retrieves arguments from user space and calls the kernel function procinfo()
+uint64
+sys_procinfo(void)
+{
+  int pid;
+  uint64 addr;
+
+  argint(0, &pid);
+  argaddr(1, &addr);
+
+  return procinfo(pid, addr);
+}
 uint64
 sys_trace(void)
 {
