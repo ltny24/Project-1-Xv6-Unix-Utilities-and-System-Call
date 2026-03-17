@@ -68,14 +68,14 @@ test_procinfo
 
 ---
 
-## 📚 Tài liệu
+## Tài liệu
 - xv6 Book  
 - Tài liệu môn học (Moodle)  
 - HOW TO ADD A NEW SYSTEM CALL  
 
 ---
 
-## ✅ Kết luận
+## Kết luận
 - Hiểu cơ chế System Call  
 - Làm việc với Kernel xv6  
 - Nâng cao kỹ năng lập trình hệ thống
