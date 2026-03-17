@@ -190,6 +190,7 @@ UPROGS=\
 	$U/_zombie\
 	$U/_test_procinfo\
 
+	$U/_trace\
 
 
 
