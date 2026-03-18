@@ -110,4 +110,3 @@ Qua đồ án này, nhóm đã:
 - Hiểu sâu hơn về cơ chế hoạt động của System Call.
 - Làm quen và trực tiếp thao tác với mã nguồn Kernel của xv6.
 - Nâng cao tư duy và kỹ năng lập trình hệ thống (C/C++), quản lý bộ nhớ và tiến trình.
-```
