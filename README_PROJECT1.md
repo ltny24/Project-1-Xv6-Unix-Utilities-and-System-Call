@@ -1,6 +1,6 @@
 # ĐỒ ÁN 1: XV6 – UNIX UTILITIES & SYSTEM CALL
 
-## Thông tin chung
+## 1. Thông tin chung
 - **Môn học:** Hệ điều hành  
 - **Trường:** Đại học Khoa học Tự nhiên – ĐHQG HCM  
 
@@ -10,7 +10,7 @@
 
 ---
 
-## Thành viên nhóm
+## 2. Thành viên nhóm
 
 | STT | Họ và tên | MSSV | Công việc | Hoàn thành |
 |:--:|:--|:--:|:--|:--:|
@@ -20,7 +20,7 @@
 
 ---
 
-## Chức năng chính đã cài đặt
+## 3. Chức năng chính đã cài đặt
 
 ###  User Programs
 - **`xargs`**: Đọc input từ stdin và truyền làm tham số cho lệnh khác (`fork`, `exec`)
