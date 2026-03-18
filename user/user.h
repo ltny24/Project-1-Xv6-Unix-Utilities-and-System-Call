@@ -1,5 +1,9 @@
 struct stat;
 
+// procinfo() system call interface for retrieving process information
+struct procinfo;
+int procinfo(int pid, struct procinfo *info);
+
 // system calls
 int fork(void);
 int exit(int) __attribute__((noreturn));
@@ -22,7 +26,7 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-
+int trace(int);
 // ulib.c
 int stat(const char*, struct stat*);
 char* strcpy(char*, const char*);
