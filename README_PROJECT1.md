@@ -1,4 +1,3 @@
-```markdown
 # ĐỒ ÁN 1: XV6 – UNIX UTILITIES & SYSTEM CALL
 
 ## 1. Thông tin chung
